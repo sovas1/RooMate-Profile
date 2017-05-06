@@ -2,16 +2,13 @@ machine:
   java:
     version: oraclejdk8
 
-dependencies:
-  override:
-    - mvn clean install
-
 machine:
   services:
     - docker
 
 dependencies:
   override:
+    - mvn clean install
     - docker info
     - docker build --rm=false -t sovas/roomate-profiles .
 
