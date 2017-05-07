@@ -14,9 +14,8 @@ dependencies:
 
 test:
   override:
-    - docker network create --driver bridge isolated_nw
-    - docker run --name mongodb -d --network=isolated_nw mongo:3.4.2
-    - docker run --name roomate-profiles --network=isolated_nw -d -p 8080:8080 sovas/roomate-profiles; sleep 10
+    - docker run --name mongodb -d mongo:3.4.2
+    - docker run --name roomate-profiles -d -p 8080:8080 sovas/roomate-profiles; sleep 10
     - curl --retry 3 --retry-delay 5 -v http://localhost:8080/health
 
 deployment:
