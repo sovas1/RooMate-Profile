@@ -12,9 +12,9 @@ import roomate.model.enums.Work;
 
 @Data
 @Builder
-@Document
 @NoArgsConstructor
 @AllArgsConstructor
+@Document(collection = "profiles")
 public class Profile {
 
     @Id
@@ -24,6 +24,7 @@ public class Profile {
     private String lastName;
     private Integer age;
     private Sex sex;
+
     private Work workTime;
     private Studies studiesTime;
 
