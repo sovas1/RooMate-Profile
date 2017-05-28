@@ -1,6 +1,7 @@
-roomate - profiles service
-
-###Development manifest:
+![Picture](http://doc.rultor.com/images/github-logo.png)
+# RooMate - Profile Service
+***
+### Development manifest:
 - create issue
 - using GitFlow, create Feature branch with assiociated #number
 - write tests & implementation
