@@ -10,10 +10,12 @@ dependencies:
   override:
     - mvn clean install
     - docker info
-    - docker build --rm=false -t sovas/roomate-profiles -t sovas/roomate-profiles:$CIRCLE_BUILD_NUM .
+    - docker build --rm=false -t sovas/roomate-profiles .
+    - docker tag sovas/roomate-profiles sovas/roomate-profiles:$CIRCLE_BUILD_NUM
 
 test:
   override:
+    - docker images
     - docker network create --driver bridge isolated_nw
     - docker run --name mongodb -d --net=isolated_nw mongo:3.4.2
     - docker run --name roomate-profiles --net=isolated_nw -d -p 8080:8080 sovas/roomate-profiles:$CIRCLE_BUILD_NUM ; sleep 10
@@ -25,4 +27,4 @@ deployment:
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push sovas/roomate-profiles:$CIRCLE_BUILD_NUM
-      - docker push sovas/roomate-profiles
+      - docker push sovas/roomate-profiles:latest
