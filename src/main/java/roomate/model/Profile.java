@@ -6,9 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import roomate.model.enums.AcceptsDictionary;
 import roomate.model.enums.Sex;
 import roomate.model.enums.Studies;
 import roomate.model.enums.Work;
+
+import java.util.Map;
 
 @Data
 @Builder
@@ -28,11 +31,7 @@ public class Profile {
     private Work workTime;
     private Studies studiesTime;
 
-    private Boolean acceptAnimals;
-    private Boolean acceptSmoking;
-    private Boolean acceptDrinking;
-
-    private Boolean cleaningSchedule;
+    private Map<AcceptsDictionary, Boolean> accepts;
 
     private String aboutMe;
 

@@ -1,8 +1,16 @@
 package roomate.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Map;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProfileDto {
 
     private String id;
@@ -15,11 +23,7 @@ public class ProfileDto {
     private String workTime;
     private String studiesTime;
 
-    private Boolean acceptAnimals;
-    private Boolean acceptSmoking;
-    private Boolean acceptDrinking;
-
-    private Boolean cleaningSchedule;
+    private Map<String, Boolean> accepts;
 
     private String aboutMe;
 

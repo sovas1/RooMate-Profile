@@ -11,6 +11,9 @@ import roomate.model.dto.ProfileDto;
 import roomate.model.enums.Sex;
 import run.Application;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -40,10 +43,6 @@ public class ProfileMapperTest {
                 .lastName("Sowa")
                 .age(20)
                 .sex(Sex.MALE)
-                .acceptAnimals(true)
-                .acceptDrinking(false)
-                .acceptSmoking(false)
-                .cleaningSchedule(true)
                 .aboutMe("Im a person.")
                 .build();
 
@@ -54,4 +53,28 @@ public class ProfileMapperTest {
         assertThat(profile.getAboutMe(), is(equalTo(profileDto.getAboutMe())));
 
     }
+
+    @Test
+    public void shouldMapToEntity() throws Exception {
+
+        // given
+        Map<String, Boolean> accepts = new HashMap<>();
+        accepts.put("animals", true);
+        ProfileDto profile = ProfileDto.builder()
+                .firstName("Mariusz")
+                .lastName("Sowa")
+                .age(20)
+                .sex(Sex.MALE.name())
+                .accepts(accepts)
+                .aboutMe("Im a person.")
+                .build();
+
+        // when
+        final Profile profileDto = mapper.toEntity(profile);
+
+        // then
+        assertThat(profile.getAboutMe(), is(equalTo(profileDto.getAboutMe())));
+
+    }
+
 }
