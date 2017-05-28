@@ -11,7 +11,7 @@ dependencies:
     - mvn clean install
     - docker info
     - docker build --rm=false -t sovas/roomate-profiles .
-    - docker tag sovas/roomate-profiles:$CIRCLE_BUILD_NUM sovas/roomate-profiles:latest
+    - docker tag sovas/roomate-profiles sovas/roomate-profiles:$CIRCLE_BUILD_NUM
 
 test:
   override:
