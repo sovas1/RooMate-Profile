@@ -10,7 +10,7 @@ dependencies:
   override:
     - mvn clean install
     - docker info
-    - docker build --rm=false -t sovas/roomate-profiles sovas/roomate-profiles:$CIRCLE_BUILD_NUM .
+    - docker build --rm=false -t sovas/roomate-profiles -t sovas/roomate-profiles:$CIRCLE_BUILD_NUM .
 
 test:
   override:
