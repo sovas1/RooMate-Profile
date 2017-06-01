@@ -45,10 +45,10 @@ public class GlobalExceptionHandler {
     private FieldValidationErrorListDTO processFieldErrors(List<FieldError> fieldErrors) {
         FieldValidationErrorListDTO dto = new FieldValidationErrorListDTO();
 
-        for (FieldError fieldError : fieldErrors) {
+        fieldErrors.forEach(fieldError -> {
             String localizedErrorMessage = resolveErrorMessage(fieldError);
             dto.addValidationError(fieldError.getField(), localizedErrorMessage);
-        }
+        });
 
         return dto;
     }
