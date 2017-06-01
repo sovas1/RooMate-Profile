@@ -14,6 +14,8 @@
         <mockito.version>2.7.22</mockito.version>
         <junit.version>4.12</junit.version>
 
+        <aspectj.version>1.8.10</aspectj.version>
+
         <org.mapstruct.version>1.2.0.Beta2</org.mapstruct.version>
         <org.projectlombok.version>1.16.16</org.projectlombok.version>
 
@@ -49,13 +51,24 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
 
+        <!--aop-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+        <!--annotation processing-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${org.projectlombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-jdk8</artifactId>
@@ -68,6 +81,7 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--tests-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
