@@ -43,7 +43,8 @@ public class GlobalExceptionHandlerTest {
         String body = this.restTemplate.getForObject("/profiles/" + idOfNonExistingUser, String.class);
 
         // then
-        assertThat(body).isEqualTo("Hello World");
+        assertThat(body).isEqualTo("{\"url\":\"http://localhost:" + definedPort + "/profiles/3a4n2325jada6\"," +
+                "\"ex\":\"getProfiles() is not implemented yet.\"}");
     }
 
 }
