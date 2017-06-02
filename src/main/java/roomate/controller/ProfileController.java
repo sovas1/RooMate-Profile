@@ -11,6 +11,7 @@ import roomate.model.Profile;
 import roomate.model.dto.ProfileDto;
 import roomate.service.ProfileService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -29,7 +30,7 @@ public class ProfileController {
     }
 
     @PostMapping("")
-    public ResponseEntity<ProfileDto> save(@RequestBody ProfileDto profileDto) {
+    public ResponseEntity<ProfileDto> save(@Valid @RequestBody ProfileDto profileDto) {
         final Profile profile = service.save(profileDto);
         final ProfileDto resultData = mapper.toDto(profile);
         return new ResponseEntity<>(resultData, HttpStatus.CREATED);
