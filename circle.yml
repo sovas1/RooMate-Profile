@@ -18,8 +18,9 @@ test:
     - docker images
     - docker network create --driver bridge isolated_nw
     - docker run --name mongodb -d --net=isolated_nw mongo:3.4.2
-    - docker run --name roomate-profiles --net=isolated_nw -p 8080:8080 sovas/roomate-profiles:$CIRCLE_BUILD_NUM
-    - curl --retry 1 --retry-delay 5 -v http://localhost:8080/health
+    - docker run --name roomate-profiles --net=isolated_nw -d -p 8080:8080 sovas/roomate-profiles:$CIRCLE_BUILD_NUM ; sleep 10
+    - docker logs roomate-profiles
+    - curl --retry 1 --retry-delay 1 -v http://localhost:8080/health
 
 deployment:
   hub:
