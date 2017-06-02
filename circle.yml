@@ -28,3 +28,7 @@ deployment:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push sovas/roomate-profiles:$CIRCLE_BUILD_NUM
       - docker push sovas/roomate-profiles:latest
+  production:
+    branch: master
+    heroku:
+      appname: roomate-profiles-production
