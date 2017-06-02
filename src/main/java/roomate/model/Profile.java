@@ -11,7 +11,9 @@ import roomate.model.enums.Sex;
 import roomate.model.enums.Studies;
 import roomate.model.enums.Work;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Data
 @Builder
@@ -32,6 +34,8 @@ public class Profile {
     private Studies studiesTime;
 
     private Map<AcceptsDictionary, Boolean> accepts;
+
+    private Set<Passion> passions;
 
     private String aboutMe;
 
