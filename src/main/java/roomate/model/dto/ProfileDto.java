@@ -4,9 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import roomate.model.Passion;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Map;
+import java.util.Set;
 
 @Data
 @Builder
@@ -30,6 +33,9 @@ public class ProfileDto {
 
     @NotNull
     private Map<String, Boolean> accepts;
+
+    @Valid
+    private Set<Passion> passions;
 
     private String aboutMe;
 
