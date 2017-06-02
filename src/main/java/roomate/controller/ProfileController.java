@@ -3,6 +3,9 @@ package roomate.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import roomate.infrastructure.exception.ObjectNotFoundException;
+import roomate.infrastructure.exception.UnimplementedMethodException;
 import roomate.mapper.ProfileMapper;
 import roomate.model.Profile;
 import roomate.model.dto.ProfileDto;
@@ -39,7 +42,7 @@ public class ProfileController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProfileDto> findById(@PathVariable String id) {
+    public ResponseEntity<ProfileDto> findById(@PathVariable String id) throws ObjectNotFoundException {
         final ProfileDto resultData = service.findById(id);
         return new ResponseEntity<>(resultData, HttpStatus.OK);
     }

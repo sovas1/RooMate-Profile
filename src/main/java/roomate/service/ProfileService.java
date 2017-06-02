@@ -2,12 +2,15 @@ package roomate.service;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import roomate.infrastructure.exception.ObjectNotFoundException;
+import roomate.infrastructure.exception.UnimplementedMethodException;
 import roomate.mapper.ProfileMapper;
 import roomate.model.Profile;
 import roomate.model.dto.ProfileDto;
 import roomate.repository.ProfileRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,8 +36,9 @@ public class ProfileService {
                 .collect(Collectors.toList());
     }
 
-    public ProfileDto findById(String id) {
-        final Profile profile = repository.findOne(id);
+    public ProfileDto findById(String id) throws ObjectNotFoundException {
+        final Profile profile = Optional.ofNullable(repository.findOne(id))
+                .orElseThrow(() -> new ObjectNotFoundException("User with id [" + id + "] not exist."));
         return mapper.toDto(profile);
     }
 
