@@ -3,15 +3,12 @@ package roomate.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import roomate.infrastructure.exception.ObjectNotFoundException;
-import roomate.infrastructure.exception.UnimplementedMethodException;
 import roomate.mapper.ProfileMapper;
 import roomate.model.Profile;
 import roomate.model.dto.ProfileDto;
 import roomate.service.ProfileService;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -30,7 +27,7 @@ public class ProfileController {
     }
 
     @PostMapping("")
-    public ResponseEntity<ProfileDto> save(@Valid @RequestBody ProfileDto profileDto) {
+    public ResponseEntity<ProfileDto> save(@RequestBody ProfileDto profileDto) { //@VAlid
         final Profile profile = service.save(profileDto);
         final ProfileDto resultData = mapper.toDto(profile);
         return new ResponseEntity<>(resultData, HttpStatus.CREATED);
